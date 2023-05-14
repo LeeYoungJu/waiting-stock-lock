@@ -1,0 +1,11 @@
+[[management-waiting-current-status]]
+=== 웨이팅 - 현황, 운영 정보 조회
+
+==== HTTP Request
+include::{snippets}/management-waiting-current-status/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-current-status/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-current-status/http-response.adoc[]
+include::{snippets}/management-waiting-current-status/response-fields-data.adoc[]

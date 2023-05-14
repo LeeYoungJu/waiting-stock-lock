@@ -1,0 +1,37 @@
+
+[[web-waiting-cancel]]
+=== 웹 - 웨이팅 취소
+
+==== HTTP Request
+include::{snippets}/web-waiting-cancel/http-request.adoc[]
+==== Request path params
+include::{snippets}/web-waiting-cancel/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/web-waiting-cancel/http-response.adoc[]
+
+
+[[web-waiting-put-off]]
+=== 웹 - 웨이팅 미루기
+
+==== HTTP Request
+include::{snippets}/web-waiting-put-off/http-request.adoc[]
+==== Request path params
+include::{snippets}/web-waiting-put-off/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/web-waiting-put-off/http-response.adoc[]
+
+
+[[web-waiting-undo]]
+=== 웹 - 웨이팅 되돌리기
+
+==== HTTP Request
+include::{snippets}/web-waiting-undo/http-request.adoc[]
+==== Request path params
+include::{snippets}/web-waiting-undo/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/web-waiting-undo/http-response.adoc[]
+
+

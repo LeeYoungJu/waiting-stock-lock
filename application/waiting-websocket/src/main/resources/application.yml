@@ -1,0 +1,97 @@
+server:
+  port: 8089
+  shutdown: graceful
+
+spring:
+  application:
+    name: catch-waiting-websocket
+
+  config:
+    import:
+      - application-data.yml
+      - application-client-kafka.yml
+
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+  security:
+    user:
+      name: "wad"
+      password: "wAdc0rp#210"
+
+logging:
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+gateway-props:
+  catch-table-pos-api-host: https://local-apigw-catchpos.catchtable.co.kr:30070
+  is-enable-logging-request-details: true
+
+waiting:
+  topic:
+    kafka:
+      consumer:
+        group-id: ${random.uuid}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "alpha"
+
+
+sentry:
+#  아직 알파 sentry 없음
+  dsn: https://445c0a6d4732405c8bcec7b812299b9c@sentry.infra.wadcorp.co.kr/45
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  traces-sample-rate: 0.0
+
+
+gateway-props:
+  catch-table-pos-api-host: https://alpha-apigw.catchpos.co.kr
+  is-enable-logging-request-details: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "test"
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+
+gateway-props:
+  catch-table-pos-api-host: https://local-apigw-catchpos.catchtable.co.kr:30070
+  is-enable-logging-request-details: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "real"
+
+sentry:
+  dsn: https://df7d2777e1be4f22b31ec4d10cb125fc@sentry.infra.wadcorp.co.kr/51
+  environment: catch-waiting-websocket
+  logging:
+    minimum-event-level: WARN
+  traces-sample-rate: 0.0
+
+gateway-props:
+  catch-table-pos-api-host: https://apigw.catchpos.co.kr
+  is-enable-logging-request-details: false

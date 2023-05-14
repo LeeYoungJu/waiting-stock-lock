@@ -1,0 +1,171 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:43306/waiting_local?sessionVariables=transaction_isolation='READ-COMMITTED'&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: waiting_app
+    password: waiting_password
+
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+
+  jpa:
+    generate-ddl: false
+    open-in-view: true
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+      dialect: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        # 신규 DB의 경우, spring.jpa.hibernate.dialect 에 설정된 값만으로는 부족한 경우가 있다.
+        dialect: org.hibernate.dialect.MySQLDialect
+        default_batch_fetch_size: 50
+
+  flyway:
+    enabled: true
+    out-of-order: true
+    locations: "classpath:db/migration,classpath:db/batch/{vendor}"
+
+logging:
+  level:
+    org.hibernate: INFO
+    org.hibarnate.hql.internal.ast.QueryTranslatorImpl: DEBUG
+    com.zaxxer.hikari.pool: INFO
+
+redis:
+  distributed-lock:
+    host: localhost
+    port: 46379
+    timeout: 100
+    connect-timeout: 100
+  cache:
+    host: localhost
+    port: 46377
+    timeout: 100
+    connect-timeout: 100
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "alpha"
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql:aurora://catch-waiting-dev-aurora-mysql.cluster-cngeukcxnbat.ap-northeast-2.rds.amazonaws.com:3306,catch-waiting-dev-aurora-mysql.cluster-ro-cngeukcxnbat.ap-northeast-2.rds.amazonaws.com:3306/waiting_alpha?connectTimeout=800&log=true&slowQueryThresholdNanos=2000000000&sessionVariables=transaction_isolation='READ-COMMITTED'&tcpKeepAlive=true&connectionCollation=utf8mb4_unicode_ci&rewriteBatchedStatements=true
+    username: waiting_api
+    password: waiting_api
+    hikari:
+      maximum-pool-size: 30
+      # 기본 30초는 DB 부하 및 장애 상황에서 WAS 다운을 유발할 수 있다. 충분히 줄여서 WAS 다운을 최대한 방지한다.
+      # JDBC URL 에서는 800ms 로 timeout을 지정을 했고, 이 설정은 pool의 타임아웃이기 때문에 pool의 타임아웃이 조금 더 길어야 한다.
+      # JDBC의 timeout과 pool의 timeout 시간이 같거나 큰 차이가 나지 않으면
+      # JDBC에서 연결이 성공했으나 pool에서는 연결이 실패하는 경우가 발생할 수 있다.
+      connection-timeout: 820
+      # 연결이 유효한지 검증하는 시간. connection-timeout 보다 짧아야 한다.
+      validation-timeout: 600
+      # 서버의 wait_timeout이 300초이다. 300 보다 짧게 잡아야 한다. 여기서는 5초 짧게(295초) 주었다.
+      max-lifetime: 295000
+      # DB 에서 리소스를 해제하면서 max-lifetime 으로도 연결이 끊기는 경우가 있다. max-lifetime 보다는 짧게 잡아야 한다.
+      keepalive-time: 40000
+
+  flyway:
+    enabled: true
+    out-of-order: true
+    locations: "classpath:db/migration,classpath:db/batch/{vendor}"
+
+  jpa:
+    show-sql: false
+    hibernate:
+      # 알파 기동을 위해 임시로 none으로 설정
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+
+redis:
+  distributed-lock:
+    host: wad-dev-redis.sexu6b.ng.0001.apn2.cache.amazonaws.com
+    port: 6379
+    timeout: 500
+    connect-timeout: 500
+  cache:
+    host: wad-dev-redis.sexu6b.ng.0001.apn2.cache.amazonaws.com
+    port: 6379
+    timeout: 500
+    connect-timeout: 500
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "test"
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;MODE=MySQL;DATABASE_TO_UPPER=false
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+  flyway:
+    enabled: true
+    out-of-order: true
+    locations: "classpath:db/migration,classpath:db/batch/{vendor}"
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "real"
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql:aurora://catch-waiting-prod-aurora-mysql.cluster-cyeii5t0ixvy.ap-northeast-2.rds.amazonaws.com:3306,catch-waiting-prod-aurora-mysql.cluster-ro-cyeii5t0ixvy.ap-northeast-2.rds.amazonaws.com:3306/waiting_prod?connectTimeout=800&useSSL=false&allowPublicKeyRetrieval=true&log=true&slowQueryThresholdNanos=2000000000&sessionVariables=&transaction_isolation='READ-COMMITTED'&tcpKeepAlive=true&connectionCollation=utf8mb4_unicode_ci
+    username: waiting_api
+    password: dnpdlxld#q1%
+    hikari:
+      maximum-pool-size: 30
+      # 기본 30초는 DB 부하 및 장애 상황에서 WAS 다운을 유발할 수 있다. 충분히 줄여서 WAS 다운을 최대한 방지한다.
+      connection-timeout: 820
+      # 연결이 유효한지 검증하는 시간. connection-timeout 보다 짧아야 한다.
+      validation-timeout: 600
+      # 서버의 wait_timeout이 300초이다. 300 보다 짧게 잡아야 한다. 여기서는 5초 짧게(295초) 주었다.
+      max-lifetime: 295000
+      # DB 에서 리소스를 해제하면서 max-lifetime 으로도 연결이 끊기는 경우가 있다. max-lifetime 보다는 짧게 잡아야 한다.
+      keepalive-time: 40000
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    enabled: false
+    out-of-order: false
+
+redis:
+  distributed-lock:
+    host: prod-wad-common-redis.80d6gw.ng.0001.apn2.cache.amazonaws.com
+    port: 6379
+    timeout: 500
+    connect-timeout: 500
+  cache:
+    host: prod-waiting-redis.80d6gw.ng.0001.apn2.cache.amazonaws.com
+    port: 6379
+    timeout: 500
+    connect-timeout: 500
+

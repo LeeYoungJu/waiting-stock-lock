@@ -1,0 +1,25 @@
+[[remote-table-settings]]
+=== 원격 - 테이블 정보 목록 요청
+
+==== HTTP Request
+include::{snippets}/remote-table-settings/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-table-settings/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-table-settings/http-response.adoc[]
+include::{snippets}/remote-table-settings/response-fields-data.adoc[]
+
+
+[[remote-table-status]]
+=== 원격 - 테이블 현황
+
+==== HTTP Request
+include::{snippets}/remote-table-status/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-table-status/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-table-status/http-response.adoc[]
+include::{snippets}/remote-table-status/response-fields-data.adoc[]
+

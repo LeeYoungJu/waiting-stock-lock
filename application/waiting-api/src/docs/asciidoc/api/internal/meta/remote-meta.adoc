@@ -1,0 +1,12 @@
+[[remote-meta]]
+=== 원격 - 매장 메타 목록 요청
+
+==== HTTP Request
+include::{snippets}/remote-meta/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-meta/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-meta/http-response.adoc[]
+include::{snippets}/remote-meta/response-fields-data.adoc[]
+

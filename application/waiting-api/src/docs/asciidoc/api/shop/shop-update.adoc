@@ -1,0 +1,13 @@
+[[shop-update]]
+=== 단일 매장 수정
+
+==== HTTP Request
+include::{snippets}/shop-update/http-request.adoc[]
+
+==== Request path params
+include::{snippets}/shop-update/path-parameters.adoc[]
+include::{snippets}/shop-update/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/shop-update/http-response.adoc[]
+include::{snippets}/shop-update/response-fields-data.adoc[]

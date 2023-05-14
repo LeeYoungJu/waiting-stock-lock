@@ -1,0 +1,40 @@
+[[order-menus-mapping-settings-get]]
+=== 웨이팅 주문 설정 - 유형별 주문 설정 조회 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menus-mapping-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menus-mapping-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menus-mapping-settings-get/http-response.adoc[]
+include::{snippets}/order-menus-mapping-settings-get/response-fields-data.adoc[]
+
+
+[[order-menus-mapping-settings-save]]
+=== 웨이팅 주문 설정 - 유형별 주문 설정 저장 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menus-mapping-settings-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menus-mapping-settings-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-menus-mapping-settings-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menus-mapping-settings-save/http-response.adoc[]
+include::{snippets}/order-menus-mapping-settings-save/response-fields-data.adoc[]
+
+[[order-menus-mapping-settings-category-ordering-save]]
+=== 웨이팅 주문 설정 - 유형별 주문 설정 저장 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menus-mapping-settings-category-ordering-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menus-mapping-settings-category-ordering-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-menus-mapping-settings-category-ordering-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menus-mapping-settings-category-ordering-save/http-response.adoc[]
+include::{snippets}/order-menus-mapping-settings-category-ordering-save/response-fields-data.adoc[]

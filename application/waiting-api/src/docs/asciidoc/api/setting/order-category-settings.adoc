@@ -1,0 +1,41 @@
+[[order-category-settings-get]]
+=== 웨이팅 주문 설정 - 카테고리 리스트 조회
+
+==== HTTP Request
+include::{snippets}/order-category-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-category-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-category-settings-get/http-response.adoc[]
+include::{snippets}/order-category-settings-get/response-fields-data.adoc[]
+
+[[order-category-settings-post]]
+=== 웨이팅 주문 설정 - 단건 카테고리 생성
+
+==== HTTP Request
+include::{snippets}/order-category-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-category-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-category-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-category-settings-post/http-response.adoc[]
+include::{snippets}/order-category-settings-post/response-fields-data.adoc[]
+
+[[order-category-settings-post-all]]
+=== 웨이팅 주문 설정 - 카테고리 리스트 저장
+
+==== HTTP Request
+include::{snippets}/order-category-settings-post-all/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-category-settings-post-all/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-category-settings-post-all/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-category-settings-post-all/http-response.adoc[]
+include::{snippets}/order-category-settings-post-all/response-fields-data.adoc[]
+
+

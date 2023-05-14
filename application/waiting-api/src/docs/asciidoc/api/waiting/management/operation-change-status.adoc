@@ -1,0 +1,12 @@
+[[management-waiting-operation-change-status]]
+=== 웨이팅 - 운영상태 변경
+
+==== HTTP Request
+include::{snippets}/management-waiting-operation-change-status/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-operation-change-status/path-parameters.adoc[]
+include::{snippets}/management-waiting-operation-change-status/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-operation-change-status/http-response.adoc[]
+include::{snippets}/management-waiting-operation-change-status/response-fields-data.adoc[]

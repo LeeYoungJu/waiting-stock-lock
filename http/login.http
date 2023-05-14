@@ -1,0 +1,14 @@
+### 로그인
+POST https://gw.catchtablewaiting.com/api/login HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+  "userId": "keeseung.lee@catchtable.co.kr",
+  "userPw": "dlrltmd1"
+}
+
+> {%
+  client.global.set("X-CTM-AUTH", response.body.data.accessToken);
+  client.log("로그인 토큰: "+ client.global.get("X-CTM-AUTH"));
+%}
+

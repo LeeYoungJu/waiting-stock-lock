@@ -1,0 +1,14 @@
+[[management-waiting-register]]
+=== 웨이팅 - 수기 등록
+
+==== HTTP Request
+include::{snippets}/management-waiting-register/http-request.adoc[]
+
+==== Request path params
+include::{snippets}/management-waiting-register/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/management-waiting-register/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-register/http-response.adoc[]
+include::{snippets}/management-waiting-register/response-fields-data.adoc[]

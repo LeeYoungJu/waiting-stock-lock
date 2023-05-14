@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX uidx_shop_operation_info_shopId_operationDate on cw_shop_operation_info (shop_id, operation_date);

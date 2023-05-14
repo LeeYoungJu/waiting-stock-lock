@@ -1,0 +1,77 @@
+[[memo-keywords-settings-get]]
+=== 웨이팅 메모 설정 - 메모 키워드 리스트 조회
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-get/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-get/response-fields-data.adoc[]
+
+[[memo-keywords-settings-get-one]]
+=== 웨이팅 메모 설정 - 메모 키워드 단건 조회 (모달)
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-get-one/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-get-one/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-get-one/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-get-one/response-fields-data.adoc[]
+
+[[memo-keywords-settings-post]]
+=== 웨이팅 메모 설정 - 메모 키워드 단건 저장 (모달)
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/memo-keywords-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-post/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-post/response-fields-data.adoc[]
+
+[[memo-keywords-settings-update]]
+=== 웨이팅 메모 설정 - 메모 키워드 단건 수정 (모달)
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-update/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-update/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/memo-keywords-settings-update/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-update/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-update/response-fields-data.adoc[]
+
+[[memo-keywords-settings-delete]]
+=== 웨이팅 메모 설정 - 메모 키워드 단건 삭제 (모달)
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-delete/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-delete/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-delete/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-delete/response-fields-data.adoc[]
+
+[[memo-keywords-settings-ordering]]
+=== 웨이팅 메모 설정 - 메모 키워드 순서 저장
+
+==== HTTP Request
+include::{snippets}/memo-keywords-settings-ordering/http-request.adoc[]
+==== Request path params
+include::{snippets}/memo-keywords-settings-ordering/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/memo-keywords-settings-ordering/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/memo-keywords-settings-ordering/http-response.adoc[]
+include::{snippets}/memo-keywords-settings-ordering/response-fields-data.adoc[]

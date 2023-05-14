@@ -1,0 +1,33 @@
+# FROM azul/zulu-openjdk-alpine:17-jre-headless
+# alpine 3.15의 버그로 zulu-openjdk 이미지를 사용하지 않고 직접 빌드함.
+# begin of zulu-openjdk-alpine:17-jre-headless
+FROM alpine:3.16
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+RUN wget --quiet https://cdn.azul.com/public_keys/alpine-signing@azul.com-5d5dc44c.rsa.pub -P /etc/apk/keys/ && \
+    apk --repository https://repos.azul.com/zulu/alpine --no-cache add zulu17-jre-headless~=17.0.6 tzdata
+
+ENV JAVA_HOME=/usr/lib/jvm/zulu17-ca
+# end of zulu-openjdk-alpine:17-jre-headless
+
+# KST TimeZone 설정
+RUN apk --no-cache add tzdata && cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime && echo "Asia/Seoul" > /etc/timezone apk del tzdata
+
+# APK update
+RUN apk update
+RUN apk add curl
+
+RUN wget -O /dd-java-agent.jar 'https://dtdg.co/latest-java-tracer'
+
+ARG JAR_FILE_NAME=waiting-gateway-0.0.1-SNAPSHOT.jar
+ARG JAR_SOURCE=build/libs/${JAR_FILE_NAME}
+COPY ${JAR_SOURCE} ${JAR_FILE_NAME}
+
+EXPOSE 8087
+
+COPY entrypoint.real.sh /entrypoint.real.sh
+RUN ["chmod", "+x", "/entrypoint.real.sh"]
+ENTRYPOINT ["/entrypoint.real.sh"]

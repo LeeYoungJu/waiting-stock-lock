@@ -1,0 +1,73 @@
+server:
+  port: 8088
+  shutdown: graceful
+
+spring:
+  application:
+    name: catch-waiting-api
+
+  config:
+    import:
+      - application-client-pos.yml
+      - application-client-message.yml
+      - application-client-kafka.yml
+      - application-data.yml
+      - application-event-handler.yml
+
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+  security:
+    user:
+      name: "wad"
+      password: "wAdc0rp#210"
+
+logging:
+  level:
+    org.springframework.boot.autoconfigure: ERROR
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "alpha"
+
+
+sentry:
+#  아직 알파 sentry 없음
+  dsn: https://445c0a6d4732405c8bcec7b812299b9c@sentry.infra.wadcorp.co.kr/45
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  traces-sample-rate: 0.0
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "test"
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "real"
+
+sentry:
+  dsn: https://df7d2777e1be4f22b31ec4d10cb125fc@sentry.infra.wadcorp.co.kr/51
+  environment: catch-waiting-api
+  logging:
+    minimum-event-level: WARN
+  traces-sample-rate: 0.0

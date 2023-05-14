@@ -1,0 +1,10 @@
+
+[[waiting-terms-list]]
+=== 웨이팅 등록 이용약관 목록 조회
+
+==== HTTP Request
+include::{snippets}/waiting-terms-list/http-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/waiting-terms-list/http-response.adoc[]
+include::{snippets}/waiting-terms-list/response-fields-data.adoc[]

@@ -1,0 +1,56 @@
+[[home-settings-get]]
+=== 웨이팅 홈 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/home-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/home-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/home-settings-get/http-response.adoc[]
+include::{snippets}/home-settings-get/response-fields-data.adoc[]
+
+
+[[home-settings-save]]
+=== 웨이팅 홈 설정 - 수정
+Request Response 객체 동일합니다.
+
+==== HTTP Request
+include::{snippets}/home-settings-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/home-settings-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/home-settings-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/home-settings-save/http-response.adoc[]
+include::{snippets}/home-settings-save/response-fields-data.adoc[]
+
+
+[[operation-time-settings-get]]
+=== 웨이팅 운영시간 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/operation-time-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/operation-time-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/operation-time-settings-get/http-response.adoc[]
+include::{snippets}/operation-time-settings-get/response-fields-data.adoc[]
+
+
+[[operation-time-settings-save]]
+=== 웨이팅 운영시간 설정 - 수정
+Request Response 객체 동일합니다.
+
+==== HTTP Request
+include::{snippets}/operation-time-settings-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/operation-time-settings-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/operation-time-settings-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/operation-time-settings-save/http-response.adoc[]
+include::{snippets}/operation-time-settings-save/response-fields-data.adoc[]

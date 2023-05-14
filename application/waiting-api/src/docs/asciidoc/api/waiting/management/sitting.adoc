@@ -1,0 +1,11 @@
+[[management-waiting-sitting]]
+=== 웨이팅 - 착석
+
+==== HTTP Request
+include::{snippets}/management-waiting-sitting/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-sitting/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-sitting/http-response.adoc[]
+include::{snippets}/management-waiting-sitting/response-fields-data.adoc[]

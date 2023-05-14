@@ -1,0 +1,65 @@
+[[order-menus-settings-get]]
+=== 웨이팅 주문 설정 - 메뉴 리스트 조회
+
+==== HTTP Request
+include::{snippets}/order-menus-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menus-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menus-settings-get/http-response.adoc[]
+include::{snippets}/order-menus-settings-get/response-fields-data.adoc[]
+
+[[order-menu-settings-get]]
+=== 웨이팅 주문 설정 - 메뉴 단건 조회 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menu-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menu-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menu-settings-get/http-response.adoc[]
+include::{snippets}/order-menu-settings-get/response-fields-data.adoc[]
+
+[[order-menu-settings-save]]
+=== 웨이팅 주문 설정 - 메뉴 단건 생성 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menu-settings-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menu-settings-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-menu-settings-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menu-settings-save/http-response.adoc[]
+include::{snippets}/order-menu-settings-save/response-fields-data.adoc[]
+
+[[order-menu-settings-update]]
+=== 웨이팅 주문 설정 - 메뉴 단건 수정 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menu-settings-update/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menu-settings-update/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-menu-settings-update/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menu-settings-update/http-response.adoc[]
+include::{snippets}/order-menu-settings-update/response-fields-data.adoc[]
+
+[[order-menu-settings-delete]]
+=== 웨이팅 주문 설정 - 메뉴 단건 삭제 (모달)
+
+==== HTTP Request
+include::{snippets}/order-menu-settings-delete/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-menu-settings-delete/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-menu-settings-delete/http-response.adoc[]
+include::{snippets}/order-menu-settings-delete/response-fields-data.adoc[]
+
+

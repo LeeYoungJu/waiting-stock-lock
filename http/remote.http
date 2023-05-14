@@ -1,0 +1,3 @@
+### 원격 웨이팅 매장 정보 목록
+GET {{gw-api}}/internal/api/v1/shops/19464?operationDate=2023-03-09
+X-CHANNEL-ID: CATCHTABLE-B2C

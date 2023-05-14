@@ -1,0 +1,25 @@
+[[waiting-memo-save]]
+=== 웨이팅 - 메모 저장/수정
+
+==== HTTP Request
+include::{snippets}/waiting-memo-save/http-request.adoc[]
+==== Request path params
+include::{snippets}/waiting-memo-save/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/waiting-memo-save/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/waiting-memo-save/http-response.adoc[]
+include::{snippets}/waiting-memo-save/response-fields-data.adoc[]
+
+[[waiting-memo-delete]]
+=== 웨이팅 - 메모 삭제
+
+==== HTTP Request
+include::{snippets}/waiting-memo-delete/http-request.adoc[]
+==== Request path params
+include::{snippets}/waiting-memo-delete/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/waiting-memo-delete/http-response.adoc[]
+include::{snippets}/waiting-memo-delete/response-fields-data.adoc[]

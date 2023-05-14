@@ -1,0 +1,68 @@
+[[user-user]]
+=== 계정 설정 조회
+
+==== HTTP Request
+include::{snippets}/user-user/http-request.adoc[]
+==== Request path params
+include::{snippets}/user-user/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/user-user/http-response.adoc[]
+include::{snippets}/user-user/response-fields-data.adoc[]
+
+
+[[user-update-email]]
+=== 계정 이메일 변경 요청
+
+==== HTTP Request
+include::{snippets}/user-update-email/http-request.adoc[]
+
+==== Request Fields
+include::{snippets}/user-update-email/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/user-update-email/http-response.adoc[]
+include::{snippets}/user-update-email/response-fields-data.adoc[]
+
+
+
+[[user-update-password]]
+=== 계정 비밀번호 변경
+
+==== HTTP Request
+include::{snippets}/user-update-password/http-request.adoc[]
+
+==== Request Fields
+include::{snippets}/user-update-password/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/user-update-password/http-response.adoc[]
+include::{snippets}/user-update-password/response-fields-data.adoc[]
+
+
+[[user-update-phone-request]]
+=== 계정 연락처 변경 - 요청
+
+==== HTTP Request
+include::{snippets}/user-update-phone-request/http-request.adoc[]
+
+==== Request Fields
+include::{snippets}/user-update-phone-request/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/user-update-phone-request/http-response.adoc[]
+include::{snippets}/user-update-phone-request/response-fields-data.adoc[]
+
+
+[[user-update-phone-confirm]]
+=== 계정 연락처 변경 - 승인
+
+==== HTTP Request
+include::{snippets}/user-update-phone-confirm/http-request.adoc[]
+
+==== Request Fields
+include::{snippets}/user-update-phone-confirm/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/user-update-phone-confirm/http-response.adoc[]
+include::{snippets}/user-update-phone-confirm/response-fields-data.adoc[]

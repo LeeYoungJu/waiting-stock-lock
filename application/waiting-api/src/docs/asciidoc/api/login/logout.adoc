@@ -1,0 +1,8 @@
+[[login-logout]]
+=== 로그아웃
+
+==== HTTP Request
+include::{snippets}/login-logout/http-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/login-logout/http-response.adoc[]

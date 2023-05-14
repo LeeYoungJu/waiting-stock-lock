@@ -1,0 +1,25 @@
+[[option-settings-get]]
+=== 웨이팅 옵션 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/option-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/option-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/option-settings-get/http-response.adoc[]
+include::{snippets}/option-settings-get/response-fields-data.adoc[]
+
+[[option-settings-post]]
+=== 웨이팅 옵션 설정 - 저장/수정
+
+==== HTTP Request
+include::{snippets}/option-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/option-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/option-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/option-settings-post/http-response.adoc[]
+include::{snippets}/option-settings-post/response-fields-data.adoc[]

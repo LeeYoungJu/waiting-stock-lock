@@ -1,0 +1,11 @@
+[[management-waiting-initializer]]
+=== 웨이팅 관리 - 영업일 초기화
+
+==== HTTP Request
+include::{snippets}/management-waiting-initializer/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-initializer/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-initializer/http-response.adoc[]
+include::{snippets}/management-waiting-initializer/response-fields-data.adoc[]

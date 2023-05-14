@@ -1,0 +1,26 @@
+[[management-stock-get]]
+=== 웨이팅 - 재고 관리 모달 조회
+
+==== HTTP Request
+include::{snippets}/management-stock-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-stock-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-stock-get/http-response.adoc[]
+include::{snippets}/management-stock-get/response-fields-data.adoc[]
+
+[[management-stock-update]]
+=== 웨이팅 - 재고 관리 모달 저장
+
+==== HTTP Request
+include::{snippets}/management-stock-update/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-stock-update/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/management-stock-update/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-stock-update/http-response.adoc[]
+include::{snippets}/management-stock-update/response-fields-data.adoc[]
+

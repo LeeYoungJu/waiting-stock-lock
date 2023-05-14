@@ -1,0 +1,25 @@
+
+client:
+  pos:
+    host: https://alpha-apigw.catchpos.co.kr
+
+---
+spring:
+  config:
+    activate:
+      on-profile: alpha
+
+client:
+  pos:
+    host: https://alpha-apigw.catchpos.co.kr
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: real
+
+client:
+  pos:
+    host: https://apigw.catchpos.co.kr

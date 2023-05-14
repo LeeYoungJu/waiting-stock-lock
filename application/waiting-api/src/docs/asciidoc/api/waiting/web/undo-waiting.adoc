@@ -1,0 +1,12 @@
+[[web-waiting-undo-waiting]]
+=== 웹 - 웨이팅 되돌리기 목록
+
+==== HTTP Request
+include::{snippets}/web-waiting-undo-waiting/http-request.adoc[]
+==== Request path params
+include::{snippets}/web-waiting-undo-waiting/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/web-waiting-undo-waiting/http-response.adoc[]
+include::{snippets}/web-waiting-undo-waiting/response-fields-data.adoc[]
+

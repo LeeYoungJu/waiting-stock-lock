@@ -1,0 +1,11 @@
+[[management-waiting]]
+=== 웨이팅 - 단건 조회
+
+==== HTTP Request
+include::{snippets}/management-waiting/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting/http-response.adoc[]
+include::{snippets}/management-waiting/response-fields-data.adoc[]

@@ -1,0 +1,25 @@
+[[order-settings-get]]
+=== 웨이팅 주문 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/order-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-settings-get/http-response.adoc[]
+include::{snippets}/order-settings-get/response-fields-data.adoc[]
+
+[[order-settings-post]]
+=== 웨이팅 주문 설정 - 저장/수정
+
+==== HTTP Request
+include::{snippets}/order-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/order-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/order-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/order-settings-post/http-response.adoc[]
+include::{snippets}/order-settings-post/response-fields-data.adoc[]

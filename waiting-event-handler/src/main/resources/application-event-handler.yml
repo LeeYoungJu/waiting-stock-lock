@@ -1,0 +1,15 @@
+waiting:
+  web:
+    waitingUrl: my.dev.catchtablewaiting.com/waiting/%s
+    restoreUrl: my.dev.catchtablewaiting.com/waiting/%s/restore
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "real"
+
+waiting:
+  web:
+    waitingUrl: my.catchtablewaiting.com/waiting/%s
+    restoreUrl: my.catchtablewaiting.com/waiting/%s/restore

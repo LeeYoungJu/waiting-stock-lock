@@ -1,0 +1,26 @@
+[[remote-shop-operations]]
+=== 원격 - 매장 정보 목록 요청
+
+==== HTTP Request
+include::{snippets}/remote-shop-operations/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-shop-operations/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/remote-shop-operations/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-shop-operations/http-response.adoc[]
+include::{snippets}/remote-shop-operations/response-fields-data.adoc[]
+
+
+[[remote-shop-bulk]]
+=== 원격 - 매장 벌크
+
+==== HTTP Request
+include::{snippets}/remote-shop-bulk/http-request.adoc[]
+==== Request query params
+include::{snippets}/remote-shop-bulk/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-shop-bulk/http-response.adoc[]
+include::{snippets}/remote-shop-bulk/response-fields-data.adoc[]

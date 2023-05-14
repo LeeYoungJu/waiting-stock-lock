@@ -1,0 +1,12 @@
+[[remote-person-options]]
+=== 원격 - 인원 옵션 목록 요청
+
+==== HTTP Request
+include::{snippets}/remote-person-options/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-person-options/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-person-options/http-response.adoc[]
+include::{snippets}/remote-person-options/response-fields-data.adoc[]
+

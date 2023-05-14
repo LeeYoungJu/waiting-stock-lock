@@ -1,0 +1,50 @@
+[[overview]]
+== Overview
+
+[[overview-http-response-fields]]
+=== HTTP Response fields
+
+|===
+| Path | Type | Description
+
+| resultCode
+| String
+| 결과 코드
+
+| displayMessage
+| String
+| 사용자에게 표시할 메시지
+
+| message
+| String
+| 시스템 메시지
+
+| data
+| Varies
+| 결과
+|===
+
+[[overview-http-status-codes]]
+=== HTTP status codes
+
+|===
+| Status Code | Description
+
+| `200 OK`
+| 성공
+
+| `400 Bad Request`
+| 잘못된 요청
+
+| `401 Unauthorized`
+| 비인증 상태
+
+| `403 Forbidden`
+| 권한 거부
+
+| `404 Not Found`
+| 존재하지 않는 요청 리소스
+
+| `500 Internal Server Error`
+| 서버 에러
+|===

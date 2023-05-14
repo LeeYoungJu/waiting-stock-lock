@@ -1,0 +1,13 @@
+[[management-waiting-info]]
+=== 웨이팅 - 목록, 운영정보, 테이블 현황 조회
+
+==== HTTP Request
+include::{snippets}/management-waiting-info/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-info/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/management-waiting-info/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-info/http-response.adoc[]
+include::{snippets}/management-waiting-info/response-fields-data.adoc[]

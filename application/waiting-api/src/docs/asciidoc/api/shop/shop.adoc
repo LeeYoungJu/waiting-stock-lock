@@ -1,0 +1,11 @@
+[[shop-shop]]
+=== 단일 매장 조회
+
+==== HTTP Request
+include::{snippets}/shop-shop/http-request.adoc[]
+==== Request path params
+include::{snippets}/shop-shop/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/shop-shop/http-response.adoc[]
+include::{snippets}/shop-shop/response-fields-data.adoc[]

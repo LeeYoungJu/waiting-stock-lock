@@ -1,0 +1,11 @@
+[[management-waiting-cancel]]
+=== 웨이팅 - 취소
+
+==== HTTP Request
+include::{snippets}/management-waiting-cancel/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-cancel/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-cancel/http-response.adoc[]
+include::{snippets}/management-waiting-cancel/response-fields-data.adoc[]

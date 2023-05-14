@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  waiting-db:
+    # image: mysql:8-oracle
+    # Apple Silicon 장비에서는 다음 이미지를 사용할 것을 권장한다.
+    image: arm64v8/mysql:8-oracle
+    container_name: waiting-database
+    volumes:
+      - ./datadir/waiting-db:/var/lib/mysql
+      - ./waiting-db/conf:/etc/mysql/conf.d
+      - ./waiting-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "43306:3306"
+    environment:
+      TZ: Asia/Seoul
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      waiting-local-net:
+        ipv4_address: 172.40.0.10
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
+  redis:
+    image: redis:6.2.6
+    container_name: waiting-redis
+    ports:
+      - "46379:6379"
+    volumes:
+      - ./datadir/redis:/data
+  redis2:
+    image: redis:6.2.6
+    container_name: waiting-redis2
+    ports:
+      - "46377:6377"
+    volumes:
+      - ./datadir/redis2:/data
+      - ./redis2/config/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+networks:
+  waiting-local-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.40.0.0/16

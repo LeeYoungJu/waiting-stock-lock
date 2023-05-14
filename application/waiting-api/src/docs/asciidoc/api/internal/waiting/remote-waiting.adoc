@@ -1,0 +1,82 @@
+[[remote-waiting-register]]
+=== 원격 - 웨이팅 등록
+
+==== HTTP Request
+include::{snippets}/remote-waiting-register/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-register/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/remote-waiting-register/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-register/http-response.adoc[]
+include::{snippets}/remote-waiting-register/response-fields-data.adoc[]
+
+
+[[remote-waiting-cancel]]
+=== 원격 - 웨이팅 취소
+
+==== HTTP Request
+include::{snippets}/remote-waiting-cancel/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-cancel/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-cancel/http-response.adoc[]
+include::{snippets}/remote-waiting-cancel/response-fields-data.adoc[]
+
+
+[[remote-waiting-put-off]]
+=== 원격 - 웨이팅 미루기
+
+==== HTTP Request
+include::{snippets}/remote-waiting-put-off/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-put-off/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-put-off/http-response.adoc[]
+include::{snippets}/remote-waiting-put-off/response-fields-data.adoc[]
+
+
+[[remote-waiting-list]]
+=== 원격 - 웨이팅 목록
+
+==== HTTP Request
+include::{snippets}/remote-waiting-list/http-request.adoc[]
+==== Request Fields
+include::{snippets}/remote-waiting-list/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-list/http-response.adoc[]
+include::{snippets}/remote-waiting-list/response-fields-data.adoc[]
+
+
+[[remote-waiting-check-validation]]
+=== 원격 - 중복/3회초과 여부 검증
+
+==== HTTP Request
+include::{snippets}/remote-waiting-check-validation/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-check-validation/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/remote-waiting-check-validation/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-check-validation/http-response.adoc[]
+include::{snippets}/remote-waiting-check-validation/response-fields-data.adoc[]
+
+
+[[remote-waiting-other-shops]]
+=== 원격 - 타매장 웨이팅 목록 조회
+
+==== HTTP Request
+include::{snippets}/remote-waiting-other-shops/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-other-shops/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/remote-waiting-other-shops/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-other-shops/http-response.adoc[]
+include::{snippets}/remote-waiting-other-shops/response-fields-data.adoc[]

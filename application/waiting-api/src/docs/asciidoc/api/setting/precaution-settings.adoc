@@ -1,0 +1,25 @@
+[[precaution-settings-get]]
+=== 웨이팅 유의사항 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/precaution-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/precaution-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/precaution-settings-get/http-response.adoc[]
+include::{snippets}/precaution-settings-get/response-fields-data.adoc[]
+
+[[precaution-settings-post]]
+=== 웨이팅 유의사항 설정 - 저장/수정
+
+==== HTTP Request
+include::{snippets}/precaution-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/precaution-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/precaution-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/precaution-settings-post/http-response.adoc[]
+include::{snippets}/precaution-settings-post/response-fields-data.adoc[]

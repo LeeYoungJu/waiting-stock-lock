@@ -1,0 +1,11 @@
+[[management-waiting-call]]
+=== 웨이팅 - 호출
+
+==== HTTP Request
+include::{snippets}/management-waiting-call/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-call/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-call/http-response.adoc[]
+include::{snippets}/management-waiting-call/response-fields-data.adoc[]

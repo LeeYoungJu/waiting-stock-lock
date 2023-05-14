@@ -1,0 +1,20 @@
+FROM azul/zulu-openjdk-alpine:17-jre
+
+# KST TimeZone 설정
+RUN apk --no-cache add tzdata && cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime && echo "Asia/Seoul" > /etc/timezone apk del tzdata
+
+# APK update
+RUN apk update
+RUN apk add curl
+
+RUN wget -O /dd-java-agent.jar 'https://dtdg.co/latest-java-tracer'
+
+ARG JAR_FILE_NAME=waiting-api-0.0.1-SNAPSHOT.jar
+ARG JAR_SOURCE=build/libs/${JAR_FILE_NAME}
+COPY ${JAR_SOURCE} ${JAR_FILE_NAME}
+
+EXPOSE 8088
+
+COPY entrypoint.alpha.sh /entrypoint.alpha.sh
+RUN ["chmod", "+x", "/entrypoint.alpha.sh"]
+ENTRYPOINT ["/entrypoint.alpha.sh"]

@@ -1,0 +1,14 @@
+[[management-waiting-menus-get]]
+=== 웨이팅 - 수기등록 메뉴 조회
+
+==== HTTP Request
+include::{snippets}/management-waiting-menus-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-menus-get/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/management-waiting-menus-get/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-menus-get/http-response.adoc[]
+include::{snippets}/management-waiting-menus-get/response-fields-data.adoc[]
+

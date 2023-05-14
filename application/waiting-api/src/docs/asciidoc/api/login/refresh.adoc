@@ -1,0 +1,11 @@
+[[login-refresh]]
+=== 토큰연장
+
+==== HTTP Request
+include::{snippets}/login-refresh/http-request.adoc[]
+==== Request Fields
+include::{snippets}/login-refresh/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/login-refresh/http-response.adoc[]
+include::{snippets}/login-refresh/response-fields-data.adoc[]

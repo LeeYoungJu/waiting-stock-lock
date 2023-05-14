@@ -1,0 +1,55 @@
+[[remote-waiting-order-menu-get]]
+=== 원격 - 웨이팅 등록 시 메뉴 조회
+
+==== HTTP Request
+include::{snippets}/remote-waiting-order-menu-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-order-menu-get/path-parameters.adoc[]
+==== Request query params
+include::{snippets}/remote-waiting-order-menu-get/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-order-menu-get/http-response.adoc[]
+include::{snippets}/remote-waiting-order-menu-get/response-fields-data.adoc[]
+
+[[remote-waiting-order-menu-validate]]
+=== 원격 - 웨이팅 등록 시 메뉴 검증
+
+==== HTTP Request
+include::{snippets}/remote-waiting-order-menu-validate/http-request.adoc[]
+==== Request path params
+include::{snippets}/remote-waiting-order-menu-validate/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/remote-waiting-order-menu-validate/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/remote-waiting-order-menu-validate/http-response.adoc[]
+include::{snippets}/remote-waiting-order-menu-validate/response-fields-data.adoc[]
+
+[[remote-waiting-order-menu-validate-outofstock]]
+=== 원격 - 웨이팅 등록 시 메뉴 검증실패 - 재고 부족
+
+==== HTTP Response
+include::{snippets}/remote-waiting-order-menu-validate-outofstock/http-response.adoc[]
+include::{snippets}/remote-waiting-order-menu-validate-outofstock/response-fields-data.adoc[]
+
+[[remote-waiting-order-menu-validate-common-error]]
+=== 원격 - 웨이팅 등록 시 메뉴 검증실패 - 공통
+
+|===
+| 검증 실패 코드(아래 Response Body의 reason 값) | 설명
+
+| `NOT_POSSIBLE_ORDER`
+| 매장 선주문 사용여부 설정값이 off인 경우
+
+| `INVALID_LINE_ITEM_PRICE`
+| 메뉴별 가격 정보가 잘못된 경우
+
+| `INVALID_TOTAL_PRICE`
+| 최종 가격이 잘못된 경우
+|===
+
+==== HTTP Response
+include::{snippets}/remote-waiting-order-menu-validate-error-common/http-response.adoc[]
+include::{snippets}/remote-waiting-order-menu-validate-error-common/response-fields-data.adoc[]
+

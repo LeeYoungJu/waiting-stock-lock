@@ -1,0 +1,81 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+= 캐치테이블 웨이팅 앱 REST API 문서
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+include::overview.adoc[]
+== 캐치테이블 웨이팅 로그인
+include::api/login/login.adoc[]
+include::api/login/refresh.adoc[]
+include::api/login/logout.adoc[]
+
+== 캐치테이블 웨이팅 매장 정보
+include::api/shop/shop.adoc[]
+include::api/shop/shops.adoc[]
+include::api/shop/shop-update.adoc[]
+
+
+== 캐치테이블 웨이팅 - 관리모드
+include::api/waiting/management/settings.adoc[]
+include::api/waiting/management/initializer.adoc[]
+include::api/waiting/management/operation-change-status.adoc[]
+include::api/waiting/management/current-status.adoc[]
+include::api/waiting/management/waiting.adoc[]
+include::api/waiting/management/info.adoc[]
+include::api/waiting/management/list.adoc[]
+include::api/waiting/management/histories.adoc[]
+include::api/waiting/management/call.adoc[]
+include::api/waiting/management/sitting.adoc[]
+include::api/waiting/management/cancel.adoc[]
+include::api/waiting/management/undo.adoc[]
+include::api/waiting/management/register.adoc[]
+include::api/waiting/management/waiting-order.adoc[]
+include::api/waiting/management/menu.adoc[]
+include::api/waiting/management/stock.adoc[]
+include::api/waiting/management/memo.adoc[]
+
+== 캐치테이블 웨이팅 - 등록모드
+include::api/waiting/register/waiting-register.adoc[]
+include::api/waiting/register/list.adoc[]
+
+
+== 캐치테이블 웨이팅 - 설정
+include::api/setting/settings.adoc[]
+include::api/setting/option-settings.adoc[]
+include::api/setting/alarm-settings.adoc[]
+include::api/setting/precaution-settings.adoc[]
+include::api/setting/order-settings.adoc[]
+include::api/setting/order-category-settings.adoc[]
+include::api/setting/order-menu-settings.adoc[]
+include::api/setting/order-menu-mapping.adoc[]
+include::api/setting/memo-keywords-settings.adoc[]
+
+
+== 캐치테이블 웨이팅 - 계정 설정
+include::api/user/user.adoc[]
+
+
+== 캐치테이블 웨이팅 - 이용약관
+include::api/terms.adoc[]
+
+
+== 캐치테이블 웨이팅 - WEB
+include::api/waiting/web/waiting-web.adoc[]
+include::api/waiting/web/change-status.adoc[]
+include::api/waiting/web/undo-waiting.adoc[]
+include::api/waiting/web/list.adoc[]
+
+
+== 캐치테이블 원격 웨이팅 (B2C)
+include::api/internal/waiting/remote-waiting.adoc[]
+include::api/internal/waiting/remote-waiting-order.adoc[]
+include::api/internal/meta/remote-meta.adoc[]
+include::api/internal/shop/remote-shop.adoc[]
+include::api/internal/table/remote-table.adoc[]
+include::api/internal/person/remote-person.adoc[]

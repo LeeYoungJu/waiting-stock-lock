@@ -1,0 +1,26 @@
+[[management-waiting-order-get]]
+=== 웨이팅 - 주문정보 변경 조회 (모달)
+
+==== HTTP Request
+include::{snippets}/management-waiting-order-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-order-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-order-get/http-response.adoc[]
+include::{snippets}/management-waiting-order-get/response-fields-data.adoc[]
+
+[[management-waiting-order-update]]
+=== 웨이팅 - 주문정보 변경 수정 (모달)
+
+==== HTTP Request
+include::{snippets}/management-waiting-order-update/http-request.adoc[]
+
+==== Request path params
+include::{snippets}/management-waiting-order-update/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/management-waiting-order-update/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-order-update/http-response.adoc[]
+include::{snippets}/management-waiting-order-update/response-fields-data.adoc[]

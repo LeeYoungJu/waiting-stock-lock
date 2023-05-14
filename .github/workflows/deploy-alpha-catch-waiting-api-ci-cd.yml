@@ -1,0 +1,172 @@
+name: ALPHA catch-waiting-api CI_CD
+
+on:
+  push:
+    tags:
+      - 'deploy-alpha-api-**'
+    paths-ignore:
+      - '**/*.md'
+
+env:
+  AWS_REGION: ap-northeast-2
+  GH_ACTOR: ${{ secrets.GH_ACTOR }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+  ci:
+    name: CI
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
+          check-latest: true
+
+      - name: Prepare variables for deployment
+        id: prepare_vars
+        run: |
+          echo "Preparing variables for dev(alpha) deployment..."
+          export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID_FOR_DEV }}"
+          export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY_FOR_DEV }}"
+          export AWS_ACCOUNT_ID=853730445264
+          export ASSUME_ROLE_SESSION=github-actions-role-session-waiting-apps
+          echo "ecr_repository=catch-waiting-api" >> $GITHUB_OUTPUT
+          echo "ecs_cluster=CatchWaitingDevEcsCluster" >> $GITHUB_OUTPUT
+          echo "ecs_service=SvcCatchWaitingApi" >> $GITHUB_OUTPUT
+          echo "ecs_task_definition=TdCatchWaitingApi" >> $GITHUB_OUTPUT
+          OUTPUT_JSON=`aws sts assume-role --role-arn "arn:aws:iam::$AWS_ACCOUNT_ID:role/github-actions-role" --role-session-name "$ASSUME_ROLE_SESSION"`
+          export AWS_ACCESS_KEY_ID=`echo $OUTPUT_JSON | jq -r '.Credentials.AccessKeyId'`
+          export AWS_SECRET_ACCESS_KEY=`echo $OUTPUT_JSON | jq -r '.Credentials.SecretAccessKey'`
+          export AWS_SESSION_TOKEN=`echo $OUTPUT_JSON | jq -r '.Credentials.SessionToken'`
+          echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> $GITHUB_OUTPUT
+          echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_OUTPUT
+          echo "aws_session_token=$AWS_SESSION_TOKEN" >> $GITHUB_OUTPUT
+          echo "Preparing variables finished successfully!"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        shell: bash
+
+      - name: Test with Gradle
+        run: ./gradlew clean :application:waiting-api:buildNeeded
+        env:
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}
+          APICURIO_SCHEMA_REGISTRY_URL: https://apicurio.dev.wadcorp.in/
+
+  cd:
+    needs: [ ci ]
+    name: CD
+    runs-on: self-hosted
+    env:
+      working-directory: "./application/waiting-api"
+    if: ${{ startsWith(github.ref, 'refs/tags/deploy-alpha-api-') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Prepare variables for deployment
+        id: prepare_vars
+        run: |
+          echo "Preparing variables for dev(alpha) deployment..."
+          export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID_FOR_DEV }}"
+          export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY_FOR_DEV }}"
+          export AWS_ACCOUNT_ID=853730445264
+          export ASSUME_ROLE_SESSION=github-actions-role-session-waiting-apps
+          echo "ecr_repository=catch-waiting-api" >> $GITHUB_OUTPUT
+          echo "ecs_cluster=CatchWaitingDevEcsCluster" >> $GITHUB_OUTPUT
+          echo "ecs_service=SvcCatchWaitingApi" >> $GITHUB_OUTPUT
+          echo "ecs_task_definition=TdCatchWaitingApi" >> $GITHUB_OUTPUT
+          OUTPUT_JSON=`aws sts assume-role --role-arn "arn:aws:iam::$AWS_ACCOUNT_ID:role/github-actions-role" --role-session-name "$ASSUME_ROLE_SESSION"`
+          export AWS_ACCESS_KEY_ID=`echo $OUTPUT_JSON | jq -r '.Credentials.AccessKeyId'`
+          export AWS_SECRET_ACCESS_KEY=`echo $OUTPUT_JSON | jq -r '.Credentials.SecretAccessKey'`
+          export AWS_SESSION_TOKEN=`echo $OUTPUT_JSON | jq -r '.Credentials.SessionToken'`
+          export GITHUB_TAG_NAME="${{ github.ref_name }}"
+          echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> $GITHUB_OUTPUT
+          echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_OUTPUT
+          echo "aws_session_token=$AWS_SESSION_TOKEN" >> $GITHUB_OUTPUT
+          echo "github_tag_name=$GITHUB_TAG_NAME" >> $GITHUB_OUTPUT
+          echo "Preparing variables finished successfully!"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        shell: bash
+
+      - name: Build with Gradle
+        run: ./gradlew clean :application:waiting-api:booJar
+        env:
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}
+          APICURIO_SCHEMA_REGISTRY_URL: https://apicurio.dev.wadcorp.in/
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: catch-waiting-api
+          IMAGE_TAG: ${{ steps.prepare_vars.outputs.github_tag_name }}
+          SPRING_PROFILE: ${{ steps.prepare_vars.outputs.spring_profile }}
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SECURITY_TOKEN: ${{ steps.prepare_vars.outputs.aws_security_token }}
+        run: |
+          docker build --build-arg ECS_SERVICE_ARG=$ECS_SERVICE -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f ./Dockerfile.alpha .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+        working-directory: ${{ env.working-directory }}
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} \
+          --query taskDefinition > task-definition.json
+        env:
+          ECS_TASK_DEFINITION: ${{ steps.prepare_vars.outputs.ecs_task_definition }}
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: ${{ env.ECR_REPOSITORY }}
+          image: ${{ steps.build-image.outputs.image }}
+        env:
+          ECR_REPOSITORY: ${{ steps.prepare_vars.outputs.ecr_repository }}
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          service: ${{ env.ECS_SERVICE }}
+        #          wait-for-service-stability: true
+        env:
+          ECS_CLUSTER: ${{ steps.prepare_vars.outputs.ecs_cluster }}
+          ECS_SERVICE: ${{ steps.prepare_vars.outputs.ecs_service }}
+          AWS_ACCESS_KEY_ID: ${{ steps.prepare_vars.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.prepare_vars.outputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ steps.prepare_vars.outputs.aws_session_token }}

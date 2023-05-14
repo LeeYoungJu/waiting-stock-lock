@@ -1,0 +1,53 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    topics: # 사내 topic 규칙 {team-prefix}-{domain-name}-{domain-entity-name}[-{version:v2}]
+      waiting:
+        name: b2b-waiting-waiting # b2c 웨이팅 연동 토픽
+      waiting-v2:
+        name: b2b-waiting-waiting-v2 # b2b 웨이팅 웹소켓 연동 토픽
+      waiting-table:
+        name: b2b-waiting-table # b2c 테이블 연동 토픽
+      waiting-table-current-status:
+        name: b2b-waiting-tableCurrentStatus # b2c 테이블 현황 연동 토픽
+      waiting-shop-operation:
+        name: b2b-waiting-shopOperation # b2c 매장 운영 정보 연동 토픽
+      waiting-shop-operation-v2:
+        name: b2b-waiting-shopOperation-v2 # b2b 매장 운영 정보 웹소켓 연동 토픽
+      waiting-shop-setting:
+        name: b2b-waiting-shopSetting # b2b 매장 설정 정보 웹소켓 연동 토픽
+      waiting-menu-stock:
+        name: b2b-waiting-menuStock # b2b 재고 변경 웹소켓 연동 토픽
+
+schema-registry:
+  host: http://localhost:9090
+
+---
+spring:
+  config:
+    activate:
+      on-profile: alpha
+
+  kafka:
+    bootstrap-servers: b-2.devcommonkafka.xbg5jh.c4.kafka.ap-northeast-2.amazonaws.com:9092,b-1.devcommonkafka.xbg5jh.c4.kafka.ap-northeast-2.amazonaws.com:9092,b-3.devcommonkafka.xbg5jh.c4.kafka.ap-northeast-2.amazonaws.com:9092
+
+schema-registry:
+  host: https://apicurio.dev.wadcorp.in
+
+---
+spring:
+  config:
+    activate:
+      on-profile: real
+
+  kafka:
+    bootstrap-servers: b-3.prodcommonkafka.9ezen3.c4.kafka.ap-northeast-2.amazonaws.com:9092,b-1.prodcommonkafka.9ezen3.c4.kafka.ap-northeast-2.amazonaws.com:9092,b-2.prodcommonkafka.9ezen3.c4.kafka.ap-northeast-2.amazonaws.com:9092
+
+schema-registry:
+  host: https://apicurio.infra.wadcorp.in
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test

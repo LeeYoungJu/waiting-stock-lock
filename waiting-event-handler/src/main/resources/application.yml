@@ -1,0 +1,6 @@
+spring:
+  config:
+    import:
+      - application-data.yml
+      - application-client-message.yml
+      - application-client-kafka.yml

@@ -1,0 +1,11 @@
+[[management-waiting-histories]]
+=== 웨이팅 - 이력 조회
+
+==== HTTP Request
+include::{snippets}/management-waiting-histories/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-histories/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-histories/http-response.adoc[]
+include::{snippets}/management-waiting-histories/response-fields-data.adoc[]

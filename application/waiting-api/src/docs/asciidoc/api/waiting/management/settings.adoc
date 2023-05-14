@@ -1,0 +1,12 @@
+[[management-settings]]
+=== 웨이팅 - 설정정보 조회
+관리모드 폴링용 설정 정보입니다.
+
+==== HTTP Request
+include::{snippets}/management-settings/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-settings/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-settings/http-response.adoc[]
+include::{snippets}/management-settings/response-fields-data.adoc[]

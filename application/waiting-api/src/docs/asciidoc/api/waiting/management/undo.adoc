@@ -1,0 +1,23 @@
+[[management-waiting-undo-validation]]
+=== 웨이팅 - 되돌리기 예외상황 확인
+
+==== HTTP Request
+include::{snippets}/management-waiting-undo-validation/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-undo-validation/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-undo-validation/http-response.adoc[]
+include::{snippets}/management-waiting-undo-validation/response-fields-data.adoc[]
+
+[[management-waiting-undo]]
+=== 웨이팅 - 되돌리기
+
+==== HTTP Request
+include::{snippets}/management-waiting-undo/http-request.adoc[]
+==== Request path params
+include::{snippets}/management-waiting-undo/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/management-waiting-undo/http-response.adoc[]
+include::{snippets}/management-waiting-undo/response-fields-data.adoc[]

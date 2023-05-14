@@ -1,0 +1,25 @@
+[[alarm-settings-get]]
+=== 웨이팅 알람 설정 - 조회
+
+==== HTTP Request
+include::{snippets}/alarm-settings-get/http-request.adoc[]
+==== Request path params
+include::{snippets}/alarm-settings-get/path-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/alarm-settings-get/http-response.adoc[]
+include::{snippets}/alarm-settings-get/response-fields-data.adoc[]
+
+[[alarm-settings-post]]
+=== 웨이팅 알람 설정 - 저장/수정
+
+==== HTTP Request
+include::{snippets}/alarm-settings-post/http-request.adoc[]
+==== Request path params
+include::{snippets}/alarm-settings-post/path-parameters.adoc[]
+==== Request Fields
+include::{snippets}/alarm-settings-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/alarm-settings-post/http-response.adoc[]
+include::{snippets}/alarm-settings-post/response-fields-data.adoc[]
