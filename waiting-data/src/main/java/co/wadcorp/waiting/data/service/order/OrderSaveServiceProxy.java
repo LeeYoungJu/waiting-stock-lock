@@ -27,8 +27,7 @@ public class OrderSaveServiceProxy implements OrderSaveService {
             boolean isAchieve = lock.tryLock(5, 1, TimeUnit.SECONDS);
 
             if(!isAchieve) {
-
-                return null;
+                throw new RuntimeException("can not achieve lock");
             }
 
             return orderSaveService.save(orderEntity);

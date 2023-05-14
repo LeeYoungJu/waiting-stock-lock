@@ -78,11 +78,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 @Service
 public class RemoteWaitingRegisterApiService {
 
-  private static final int TAKE_OUT_PERSON_COUNT = 1;
+
   private static final String CATCH_TABLE_APP = "CATCH_TABLE_APP";
 
   private final WaitingService waitingService;
@@ -103,7 +102,6 @@ public class RemoteWaitingRegisterApiService {
 
   private final ApplicationEventPublisher eventPublisher;
 
-  @Transactional
   public RemoteWaitingRegisterResponse register(
       ChannelShopIdMapping channelShopIdMapping,
       LocalDate operationDate,
@@ -113,45 +111,15 @@ public class RemoteWaitingRegisterApiService {
     channelShopIdMapping.checkOnlyOneShopId();
     String waitingShopId = channelShopIdMapping.getFirstWaitingShopId();
 
-    ShopOperationInfoEntity shopOperationInfoEntity =
-        shopOperationApiService.findByShopIdAndOperationDate(waitingShopId, operationDate);
-
-    if (OperationStatus.findWithRemoteTime(shopOperationInfoEntity, nowDateTime)
-        != OperationStatus.OPEN) {
-      throw new AppException(HttpStatus.BAD_REQUEST, ErrorCode.NOT_OPEN_WAITING_OPERATION);
-    }
-
     PhoneNumber phoneNumber = PhoneNumberUtils.ofKr(request.getPhoneNumber());
     checkSimultaneousRegister(waitingShopId, operationDate, phoneNumber);
 
     // 고객 정보 조회 - 없다면 저장도 진행
-    ShopCustomerEntity shopCustomer = getShopCustomer(waitingShopId, phoneNumber);
-    shopCustomer.updateVisitCount();
 
-    // 중복 웨이팅 검증
-    List<WaitingEntity> waitingList = waitingService.getWaitingByCustomerSeqToday(
-        shopCustomer.getCustomerSeq(),
-        operationDate);
-    WaitingRegisterValidator.validate(waitingShopId, waitingList);
 
-    HomeSettingsData homeSettings = homeSettingsService.getHomeSettings(waitingShopId)
-        .getHomeSettingsData();
-    OptionSettingsData optionSettings = optionSettingsService.getOptionSettings(waitingShopId)
-        .getOptionSettingsData();
 
-    // 좌석 이름으로 매장이용방식(좌석옵션) 조회
-    SeatOptions seatOptions = homeSettings.findSeatOptionsBySeatOptionId(request.getTableId());
 
-    // 총 착석 인원 (인원옵션설정 사용 매장은 비착석 인원 제외)
-    Integer totalPersonCount = getTotalSeatCountByPersonOption(
-        request.getTotalPersonCount(),
-        request.getPersonOptions(),
-        optionSettings,
-        seatOptions
-    );
 
-    // 착석 인원 검증
-    seatOptions.validSeatCount(totalPersonCount);
 
     WaitingEntities waitingEntities = new WaitingEntities(
         waitingService.findAllByShopIdAndOperationDate(waitingShopId, operationDate)
@@ -352,30 +320,7 @@ public class RemoteWaitingRegisterApiService {
   }
 
 
-  private Integer getTotalSeatCountByPersonOption(
-      Integer totalPersonCount,
-      List<RemoteWaitingRegisterServiceRequest.PersonOptionVO> personOptions,
-      OptionSettingsData optionSettings,
-      SeatOptions seatOptions
-  ) {
 
-    if (seatOptions.getIsTakeOut()) {
-      return TAKE_OUT_PERSON_COUNT;
-    }
-
-    if (optionSettings.isNotUsePersonOptionSetting()) {
-      return totalPersonCount;
-    }
-
-    return optionSettings.getPersonOptionSettings().stream()
-        .filter(PersonOptionSetting::getIsSeat)
-        .map(e -> personOptions.stream()
-            .filter(r -> StringUtils.equals(r.getId(), e.getId()))
-            .findFirst()
-            .map(RemoteWaitingRegisterServiceRequest.PersonOptionVO::getCount).orElse(0))
-        .mapToInt(Integer::valueOf)
-        .sum();
-  }
 
   /**
    * 예상 대기시간(m) = 팀당 예상 대기시간 * (남은 웨이팅 팀 수 + 1)

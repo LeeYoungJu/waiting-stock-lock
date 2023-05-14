@@ -41,7 +41,8 @@ public class OrderServiceTest extends IntegrationTest {
 
     @Test
     void saveTest() throws InterruptedException {
-        int threadCnt = 100;
+        int threadCnt = 200;
+        int threadPoolCnt = 60;
 
         LocalDate operationDate = LocalDate.of(2023, 2, 25);
         String shopId = "SHOP_ID";
@@ -50,7 +51,7 @@ public class OrderServiceTest extends IntegrationTest {
         String menuId1 = "MENU_ID_1";
 
         createMenu(shopId, menuId1, "menu1", 1, 1000, 100);
-        createStock(menuId1, operationDate, 100);
+        createStock(menuId1, operationDate, threadCnt);
 
         OrderLineItemEntity menu1 = createOrderLineItem(orderId, "MENU_ID_1", "menu1", 1000, 1);
         List<OrderEntity> orders = new ArrayList<>();
@@ -63,7 +64,7 @@ public class OrderServiceTest extends IntegrationTest {
         System.out.println(beforeStock.getSalesQuantity());
         System.out.println("=================================");
 
-        ExecutorService executorService = Executors.newFixedThreadPool(30);
+        ExecutorService executorService = Executors.newFixedThreadPool(threadPoolCnt);
         CountDownLatch latch = new CountDownLatch(threadCnt);
 
         for (int i = 0; i < threadCnt; i++) {
@@ -82,7 +83,7 @@ public class OrderServiceTest extends IntegrationTest {
         latch.await();
 
         StockEntity stock = stockRepository.findByMenuIdAndOperationDate(menuId1, operationDate).get();
-        assertEquals(100, stock.getSalesQuantity());
+        assertEquals(threadCnt, stock.getSalesQuantity());
     }
 
     private MenuEntity createMenu(String shopId, String menuId, String name, int ordering,
