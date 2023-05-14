@@ -40,5 +40,3 @@ out/
 
 ### rest docs 제외 ###
 waiting-api/src/main/resources/static/docs/index.html
-
-.github/
